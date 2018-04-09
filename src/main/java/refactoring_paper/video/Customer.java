@@ -26,8 +26,6 @@ public class Customer {
 		StringBuilder result = new StringBuilder(getName() + " 고객님의 대여 기록\n");
 
 		for (Rental each : rentals) {
-			double thisAmount = each.getCharge();
-
 			frequentRenterPoints++;
 
 			if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE && each.getDaysRented() > 1) {
@@ -35,9 +33,9 @@ public class Customer {
 			}
 
 			result.append("\t" + each.getMovie().getTitle());
-			result.append("\t" + String.valueOf(thisAmount) + "\n");
+			result.append("\t" + String.valueOf(each.getCharge()) + "\n");
 			
-			totalAmount += thisAmount;
+			totalAmount += each.getCharge();
 		}
 
 		result.append("누적 대여료 : " + String.valueOf(totalAmount) + "\n");
