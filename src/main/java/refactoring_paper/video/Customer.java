@@ -27,11 +27,11 @@ public class Customer {
 	}
 
 	public String statement() {
-		return new TextStatement().value(this);
+		return TextStatement.getInstance().value(this);
 	}
 
 	public String htmlStatement() {
-		return new HtmlStatement().value(this);
+		return HtmlStatement.getInstance().value(this);
 	}
 
 	public int getTotalFrequentRenterPoints() {

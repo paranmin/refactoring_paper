@@ -4,6 +4,14 @@ import refactoring_paper.video.Customer;
 import refactoring_paper.video.Rental;
 
 public class TextStatement extends Statement {
+	private static final TextStatement instance = new TextStatement();
+
+	public static TextStatement getInstance() {
+		return instance;
+	}
+
+	private TextStatement() {
+	}
 
 	@Override
 	protected String footerString(Customer customer) {
