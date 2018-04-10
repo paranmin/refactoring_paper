@@ -28,12 +28,26 @@ public class Customer {
 		}
 
 		result.append("누적 대여료 : " + String.valueOf(getTotalCharge()) + "\n");
-		result.append("적립 포인트 : " + String.valueOf(getFrequentRenterPoints()));
+		result.append("적립 포인트 : " + String.valueOf(getTotalFrequentRenterPoints()));
 
 		return result.toString();
 	}
 
-	private int getFrequentRenterPoints() {
+	public String htmlStatement() {
+		StringBuilder result = new StringBuilder("<h1><em>"+getName() + " 고객님의 대여 기록</em></h1><p>\n");
+
+		for (Rental each : rentals) {
+			result.append(each.getMovie().getTitle() + " : ");
+			result.append(String.valueOf(each.getCharge()) + "<br>\n");
+		}
+
+		result.append("<p>누적 대여료 : <em>" + String.valueOf(getTotalCharge()) + "</em>\n");
+		result.append("<p>적립 포인트 : <em>" + String.valueOf(getTotalFrequentRenterPoints()) + "</em>\n");
+
+		return result.toString();
+	}
+
+	private int getTotalFrequentRenterPoints() {
 		int result = 0;
 		for (Rental rental : rentals) {
 			result += rental.getFrequentRenterPoints();
