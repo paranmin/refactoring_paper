@@ -3,6 +3,9 @@ package refactoring_paper.video;
 import java.util.ArrayList;
 import java.util.List;
 
+import refactoring_paper.video.statement.HtmlStatement;
+import refactoring_paper.video.statement.TextStatement;
+
 public class Customer {
 	private String name;
 	private List<Rental> rentals = new ArrayList<>();
@@ -19,35 +22,19 @@ public class Customer {
 		return name;
 	}
 
+	public List<Rental> getRentals() {
+		return rentals;
+	}
+
 	public String statement() {
-		StringBuilder result = new StringBuilder(getName() + " 고객님의 대여 기록\n");
-
-		for (Rental each : rentals) {
-			result.append("\t" + each.getMovie().getTitle());
-			result.append("\t" + String.valueOf(each.getCharge()) + "\n");
-		}
-
-		result.append("누적 대여료 : " + String.valueOf(getTotalCharge()) + "\n");
-		result.append("적립 포인트 : " + String.valueOf(getTotalFrequentRenterPoints()));
-
-		return result.toString();
+		return new TextStatement().value(this);
 	}
 
 	public String htmlStatement() {
-		StringBuilder result = new StringBuilder("<h1><em>"+getName() + " 고객님의 대여 기록</em></h1><p>\n");
-
-		for (Rental each : rentals) {
-			result.append(each.getMovie().getTitle() + " : ");
-			result.append(String.valueOf(each.getCharge()) + "<br>\n");
-		}
-
-		result.append("<p>누적 대여료 : <em>" + String.valueOf(getTotalCharge()) + "</em>\n");
-		result.append("<p>적립 포인트 : <em>" + String.valueOf(getTotalFrequentRenterPoints()) + "</em>\n");
-
-		return result.toString();
+		return new HtmlStatement().value(this);
 	}
 
-	private int getTotalFrequentRenterPoints() {
+	public int getTotalFrequentRenterPoints() {
 		int result = 0;
 		for (Rental rental : rentals) {
 			result += rental.getFrequentRenterPoints();
@@ -55,7 +42,7 @@ public class Customer {
 		return result;
 	}
 
-	private double getTotalCharge() {
+	public double getTotalCharge() {
 		double result = 0;
 		for (Rental rental : rentals) {
 			result += rental.getCharge();
