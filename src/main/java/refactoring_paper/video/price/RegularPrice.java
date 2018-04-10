@@ -1,12 +1,13 @@
 package refactoring_paper.video.price;
 
-import refactoring_paper.video.Movie;
-
 public class RegularPrice extends Price {
+	private static final RegularPrice instance = new RegularPrice();
 
-	@Override
-	public int getPriceCode() {
-		return Movie.REGULAR;
+	public static RegularPrice getInstance() {
+		return instance;
+	}
+
+	private RegularPrice() {
 	}
 
 	@Override

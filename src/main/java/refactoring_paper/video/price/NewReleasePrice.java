@@ -1,14 +1,15 @@
 package refactoring_paper.video.price;
 
-import refactoring_paper.video.Movie;
-
 public class NewReleasePrice extends Price {
+	private static final NewReleasePrice instance = new NewReleasePrice();
 
-	@Override
-	public int getPriceCode() {
-		return Movie.NEW_RELEASE;
+	public static NewReleasePrice getInstance() {
+		return instance;
 	}
 
+	private NewReleasePrice() {
+	}
+	
 	@Override
 	public double getCharge(int daysRented) {
 		double result = 0.0;

@@ -3,16 +3,17 @@ package refactoring_paper;
 import refactoring_paper.video.Customer;
 import refactoring_paper.video.Movie;
 import refactoring_paper.video.Rental;
+import refactoring_paper.video.price.FactoryPrice.PriceType;
 
 public class TestMain {
 	public static void main(String[] args) {
-		Movie mc1 = new Movie("니모를 찾아서", Movie.CHIDLENS);
-		Movie mc2 = new Movie("말레피센트", Movie.CHIDLENS);
-		Movie mr1 = new Movie("명량", Movie.REGULAR);
-		Movie mr2 = new Movie("변호사", Movie.REGULAR);
-		Movie mn1 = new Movie("곡성", Movie.NEW_RELEASE);
-		Movie mn2 = new Movie("인디펜던스데이2", Movie.NEW_RELEASE);
-		Movie ma1 = new Movie("제이슨본", Movie.ACTION);
+		Movie mc1 = new Movie("니모를 찾아서", PriceType.CHIDLENS);
+		Movie mc2 = new Movie("말레피센트", PriceType.CHIDLENS);
+		Movie mr1 = new Movie("명량", PriceType.REGULAR);
+		Movie mr2 = new Movie("변호사", PriceType.REGULAR);
+		Movie mn1 = new Movie("곡성", PriceType.NEW_RELEASE);
+		Movie mn2 = new Movie("인디펜던스데이2", PriceType.NEW_RELEASE);
+		Movie ma1 = new Movie("제이슨본", PriceType.ACTION);
 
 		Rental r1 = new Rental(mc1, 3);
 		Rental r2 = new Rental(mc2, 4);

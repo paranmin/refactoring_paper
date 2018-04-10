@@ -1,12 +1,13 @@
 package refactoring_paper.video.price;
 
-import refactoring_paper.video.Movie;
-
 public class ChildrenPrice extends Price {
+	private static final ChildrenPrice instance = new ChildrenPrice();
 
-	@Override
-	public int getPriceCode() {
-		return Movie.CHIDLENS;
+	public static ChildrenPrice getInstance() {
+		return instance;
+	}
+
+	private ChildrenPrice() {
 	}
 
 	@Override

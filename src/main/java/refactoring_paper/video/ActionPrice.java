@@ -3,10 +3,13 @@ package refactoring_paper.video;
 import refactoring_paper.video.price.Price;
 
 public class ActionPrice extends Price {
+	private static final ActionPrice instance = new ActionPrice();
 
-	@Override
-	public int getPriceCode() {
-		return Movie.ACTION;
+	public static ActionPrice getInstance() {
+		return instance;
+	}
+
+	private ActionPrice() {
 	}
 
 	@Override
